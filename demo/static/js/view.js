@@ -93,6 +93,7 @@ function clipCreate(view, img_item){
    * }
    */
 
+  console.log(img_item);
   var img = imgCreate(img_item['image_url'], "", "");
   img.setAttribute("class", "imgShow");
 

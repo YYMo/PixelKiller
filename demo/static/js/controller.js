@@ -9,11 +9,18 @@ function PhotoListController(model, view) {
 
 PhotoListController.prototype = {
   //get photos data from server 
-  loadData: function(auth_key){
+  loadData: function(auth_key, login){
     var url = generateRequestUrl(auth_key);
+    var header = {};
+    if(login == true){
+      var data = getResourceUrlWithToken(url);
+      url = data['url'];
+      header = data['header'];
+    }
     var _this = this;
     $.ajax({
       url:url,
+      headers:header,
       dataType:'json',
       async:false,
       success: function(result){
