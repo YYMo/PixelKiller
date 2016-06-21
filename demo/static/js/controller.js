@@ -5,10 +5,16 @@
 function PhotoListController(model, view) {
   this._model = model;
   this._view = view;
+
+  var _this = this;
+  this._view.likeButtonClicked.attach(function(sender, args){
+    _this.likeItem(args);
+  });
 }
 
 PhotoListController.prototype = {
   //get photos data from server 
+  //depends on login, the parameters are different
   loadData: function(auth_key, login){
     var url = generateRequestUrl(auth_key);
     var header = {};
@@ -31,6 +37,30 @@ PhotoListController.prototype = {
       //TODO: error
     });
   },
+
+  likeItem: function(args){
+    //check if user login
+    if(localStorage.hasOwnProperty('oauthAccessToken')){
+      var id = args['img']['id'];
+      var url = "https://api.500px.com/v1/photos/" + id + "/vote?vote=" + args['like'];
+      console.log('post url: ' + url);
+
+      var accessInfo = getResourceUrlWithToken(url);
+      var _url = accessInfo['url'];
+      var _header = accessInfo['header'];
+
+      //this is not working currently :(
+      //will return 401 error
+      $.ajax({
+        method: 'POST',
+        url:_url,
+        headers:_header,
+        success: function(result){
+          console.log(result);
+        }
+      });
+    }
+  }
 }
 
 //OAuth1.0 logic controller 
@@ -96,7 +126,6 @@ OAuthController.prototype = {
         'oauthTokenSecret': oauthTokenSecret,
         'oauthVerifier': oauthVerifier,
       };
-    console.log(data)
 
     // call backend to calculate filed needed for access token
     $.ajax({
@@ -106,9 +135,6 @@ OAuthController.prototype = {
         console.log(result)
         var _url = result["url"]
         var _header = result["header"]
-
-        console.log(_url)
-        console.log(_header)
 
         //call 500px API to get access token
         $.ajax({
@@ -125,6 +151,9 @@ OAuthController.prototype = {
             //store oauthToken in HTML5 Web Storage
             localStorage.setItem("oauthAccessToken", oauthAccessToken)
             localStorage.setItem("oauthAccessTokenSecret", oauthAccessTokenSecret)
+
+            //redirect
+            window.location = "http://127.0.0.1:8001/";
           }
         })
       }

@@ -8,6 +8,7 @@ function PhotoListView(model, elements){
   this._showedIndex = 0; // last index read from model
 
   this.showMoreButtonClicked =new Event(this);
+  this.likeButtonClicked = new Event(this);
 
   var _this = this;
   var showMoreButton = this._elements['loadButton'];
@@ -102,7 +103,46 @@ function clipCreate(view, img_item){
 
   var photoDiv = document.createElement('div');
   photoDiv.setAttribute("class", "col-sm-4 no-margin");
-  
+
+  // show Like button?
+  if('voted' in img_item){
+	  var likeButton = document.createElement("input");
+	  likeButton.setAttribute("type", "button");
+	  if(img_item['voted'] == false){
+	  	console.log("yes");
+	  	likeButton.setAttribute("class", "btn btn-success");
+	  	likeButton.setAttribute("value", "LIKE");
+	  	likeButton.addEventListener('click', function(){
+	    	console.log("click like" );
+	    	view.likeButtonClicked.notify({'img':img_item, 'like':1});
+	  }); 
+	  }
+	  else{
+	  	likeButton.setAttribute("class", "btn btn-warning");
+	  	likeButton.setAttribute("value", "UNLIKE");
+	  	likeButton.addEventListener('click', function(){
+	    	console.log("click unlike" );
+	    	view.likeButtonClicked.notify({'img':img_item, 'like':0});
+	  	}); 
+	  }
+
+	  var likeDiv = document.createElement('div');
+	  likeDiv.setAttribute("class", "on-top");
+	  likeDiv.appendChild(likeButton);
+	  photoDiv.appendChild(likeDiv);
+
+	  likeDiv.style.visibility = "hidden";
+
+	  photoDiv.addEventListener('mouseover', function(){
+	    likeDiv.style.visibility = "visible";
+	  });
+
+	  photoDiv.addEventListener('mouseout', function(){
+	    likeDiv.style.visibility = "hidden";
+	  });
+	  
+  }
+
   photoDiv.appendChild(limitDiv);
   limitDiv.appendChild(img);
   
