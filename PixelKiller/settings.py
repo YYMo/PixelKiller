@@ -103,3 +103,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# user defined constant
+CONSUMER_KEY = "mrUU0SEMIlwOxsm5ok5o6XTqv9UFQHPo8R6j6eHD"
+CONSUMER_SECRET = "UImG3cdMkI9St5mA4hKmIkXf6qpuyKY9UnZqyaYL"
