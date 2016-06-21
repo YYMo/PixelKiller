@@ -146,7 +146,6 @@ function clipCreate(view, img_item){
   photoDiv.appendChild(limitDiv);
   limitDiv.appendChild(img);
   
-  //d.appendChild(likeButton);
   return photoDiv;
 }
 
