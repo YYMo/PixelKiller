@@ -60,6 +60,17 @@ PhotoListView.prototype = {
 
 };
 
+//OAuth process view
+function OAuthView(elements) {
+  this.requestToken = new Event(this);
+  var button = elements['OAuthLoginButton'];
+  var _this = this;
+
+  button.addEventListener('click', function(){
+    _this.requestToken.notify();
+  })
+}
+
 /* util functions for view */
 
 //create a image, return an "img" element
@@ -96,4 +107,12 @@ function clipCreate(view, img_item){
   
   //d.appendChild(likeButton);
   return photoDiv;
+}
+
+function showUserInfo(data){
+  var d = document.getElementById("userInfo");
+  var t = document.createTextNode("User Name: " + data["username"] + ", Email: " + data["email"]);
+  var h = document.createElement("h3");
+  h.appendChild(t);
+  d.appendChild(h);
 }

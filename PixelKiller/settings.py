@@ -107,3 +107,6 @@ STATIC_URL = '/static/'
 # user defined constant
 CONSUMER_KEY = "mrUU0SEMIlwOxsm5ok5o6XTqv9UFQHPo8R6j6eHD"
 CONSUMER_SECRET = "UImG3cdMkI9St5mA4hKmIkXf6qpuyKY9UnZqyaYL"
+OAUTH_REQUEST_TOKEN_URL = "https://api.500px.com/v1/oauth/request_token"
+OAUTH_ACCESS_TOKEN_URL = "https://api.500px.com/v1/oauth/access_token"
+CALLBACK_URL = "http://127.0.0.1:8001/"
