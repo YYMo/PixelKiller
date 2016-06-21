@@ -1,0 +1,45 @@
+Web Developer
+
+Overview
+
+In this challenge we are asking for your help building a simple web application.  The work required includes of both frontend and backend work. The web app will consume content from the 500px public API, use 500px’s OAuth login, and support user-specific social actions.
+
+During the development of this web app, you may face different design or implementation choices.  You’re free to make any such choices as you see fit; however, please make sure you document these decisions and include them in your code as either comments or in a summary included with your submission.  We want to see how you think, what decisions you make, and why.
+
+This challenge is designed for candidates to showcase their learning, problem solving, and programming skills. There is no strict time limit, but please let us know your estimation on how long this challenge will take.
+
+Rules and Tools
+
+To build the web app, feel free to use any programming languages and associated frameworks you want.  If you’re not sure what to use, we’d suggest Ruby on Rails, as this is the framework we use at 500px.  Note: If you choose a different framework, we strongly suggest using one that follows the MVC pattern.
+It’s okay to use some third-party libraries or plugins (e.g., jQuery plugins), but we might ask you about reasons behind picking particular ones.
+You must check your solution into Github and maintain a communicative commit history so that we can follow the evolution of your solution. Also, please put your documentation in Github wiki pages or a README.md
+Please create separate branches (or apply tags) for your solution at the end of each of the tasks, so that we can see your solution for each task separately.
+This challenge is not designed to be difficult, but the code you write should meet your own high standards. We value thoughtful, clean, concise and clear code.
+
+
+Assessment
+
+Your solution will be assessed before an on-site interview. If you are invited for an interview, we’ll have some follow-up questions about why you designed and implemented your app the way you did, and ask questions about how your app might evolve in different situations.
+
+Task 1 - Photo Showcase
+
+Please write a simple web app to showcase the Top 100 Popular photos from 500px.  More specifically, the Top 100 Popular photos must be dynamically obtained from a 500px public API endpoint. Inside the web app, please use the MVC pattern as much as possible, since you will be asked to further extend this web app later.
+
+In terms of UI, feel free to choose the frontend presentation of the photos, such as a grid or a list.  Pick the view you think is the best for a group of photos.
+
+Task 2 - 500px Interactions
+
+The 500px API is a standard OAuth 1.0a provider.  Extend your web app to allow users to log into your application using their existing 500px credentials.  Your web app will work as a standard OAuth client and obtain an access token from 500px.com.
+
+Once a valid token is obtained, you can use it to execute user-specific actions on 500px resources (i.e., photos presented in your web app).  For simplicity, you only need to support one of our social actions --- like --- in your web app.  Add a “like” button to each photo, which, when clicked, allows a logged-in user to like individual photos.
+
+Note: You are free to choose how you would like to store the obtained access token, as long as you provide a proper explanation of your choice of solution.
+
+Task 3 - Cosmetics and Testing
+
+To further polish this web application, you may choose one of these additional tasks:
+Beautify the UI using your CSS talent, such as styling and animations.
+Increase the reliability of the application by adding extensive test coverage.
+
+This task is pretty open; feel free to pick the direction you want to go in (or even do both if you have extra cycles). Please take this opportunity to show us what are good at in addition to coding.
+
