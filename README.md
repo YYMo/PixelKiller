@@ -4,6 +4,13 @@ This is very 'mini' browers of 500px photo libraries that allow user to see the 
 ## Motivation
 This project is inspired by the interview code challenge of 500px. See detailed requirement in code_challenge.txt.
 
+## Deploy
+Install Django and OAuthlib first.
+In command line:\
+python manage.py runserver 127.0.0.1:8001
+
+
+
 ## Test
 Basic functions have been manually tested in Chrome, FireFox, Safari on MacOS.
 
